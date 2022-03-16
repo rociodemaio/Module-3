@@ -1,0 +1,102 @@
+#EX 1
+# Write a program that simulates a fortune cookie. The program should display one of five
+# unique fortunes, at random, each time it’s run.
+
+import random
+
+cookies = ["Your dream will come true.",
+           " Soon you'll get a free pizza !",
+           "If you work hard, you'll get what you want.",
+           "If you have something worth fighting for, then fight for it.",
+           "Think with your brain, but also with your heart."]
+
+# choosing one randomly
+cookie = random.choice(cookies)
+print(cookie)
+
+
+EX 2
+# Write a program that flips a coin 100 times and then tells you the number of heads and
+# tails.
+
+import random
+
+# set the coin
+headsCount = 0
+tailsCount = 0
+count = 0
+
+# the loop
+count = 0
+while count<100:
+    coin = random.randrange(2)
+    if coin == 0:
+         headsCount += 1
+    else:
+        tailsCount += 1
+    count += 1
+
+print ("The number of heads was", headsCount)
+print ("The number of tails was", tailsCount)
+
+Ex 3
+
+# Modify the Guess My Number game so that the player has a limited number of guesses.
+# If the player fails to guess in time, the program should display an appropriately chastising
+# message.
+
+# initial values
+the_number = random.randint(1, 100)
+# print(the_number) 
+guess = int(input("Take a guess: "))
+tries = 1
+
+    # guessing loop
+while guess != the_number:
+    tries+=1
+    if tries>10: # When the user has guessed more then 10 times, print Game Over and break the while loop
+        print("Game Over! It took you more then 10 attempts.\n")
+        break
+    elif guess > the_number: #if the guessed number is bigger, print Lower...
+        print("Lower...")
+    else: #if the guessed number is lower, print higher...
+        print("Higher...")
+    guess = int(input("Take a guess: ")) #user guess again
+
+if guess == the_number: #if guessed number is correct, print the following lines:
+    print("You guessed it! The number was", the_number)
+    print("And it only took you", tries, "tries!\n")
+    
+Ex 4   
+
+# Write the pseudocode for a program where the player and the computer trade places in
+# the number guessing game. That is, the player picks a random number between 1 and 100
+# that the computer has to guess. Before you start, think about how you guess. If all goes
+# well, try coding the game.
+
+print("\tWelcome to 'Guess My Number'!")
+print("\nThis time we will switch seats! You may pick a number between 1 and 10.")
+print("And the PC will try to guess it in less then 10 attempts.\n")
+
+# Setting initial values
+user_number = int(input("Pick a number between 1 and 10: "))
+times = 1
+pc_guess = random.randint(1, 10)
+
+# Comparing user_number to the pc_guess with while loop
+while pc_guess != user_number: # when numbers are not the same, while loop runs
+    times+=1 # add 1 to the attempts of the PC
+    if times>10: # When computer has guessed more than 10 times, congratulate the user and break the while loop
+        print("You win!! It took the PC more then 10 attempts to guess your number!!\n")
+        break
+    pc_guess = random.randint(1, 10) # give a new value to pc_guess
+    print("Is it", pc_guess,"?")
+    print("No.")
+
+if pc_guess == user_number: # if the guessed number is correct print the following lines:
+    print("The PC guessed it! The number was", user_number)
+    print("It took", times, "tries!\n")
+    print("End of the NEW Guess My Number game, I hope you enjoyed it!\n\n")
+
+#exit statement
+input("\n\nPress the enter key to exit.")
